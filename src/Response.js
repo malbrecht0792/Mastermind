@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Guess extends Component {
+class Response extends Component {
     constructor(props) {
         super(props);
     }
@@ -8,10 +8,10 @@ class Guess extends Component {
     render() {
         return (
             <React.Fragment>
-              <span>Guess</span>  
+                <span>Response</span>  
             </React.Fragment>
         )
     }
  }
 
- export { Guess };
+ export { Response };
