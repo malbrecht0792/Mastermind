@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Setup } from './Setup.js'
+import { Board } from './Board.js'
 
 class Game extends Component {
 
@@ -30,7 +31,7 @@ class Game extends Component {
     render() {
         let board = <div></div>
         if(this.state.newGame) {
-            board = <div>{`Created a board with ${this.state.rounds} rounds`}</div>
+            board = <Board rounds={Number(this.state.rounds)}/>
         }
         return (
             <React.Fragment>
