@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
-import { Guess } from './Guess.js';
 
-class Round extends Component {
+class Guess extends Component {
     constructor(props) {
         super(props);
     }
-
+    
     render() {
         return (
             <React.Fragment>
-                <Guess />
-                {/* <div>Round {this.props.roundNumber}</div> */}
+              <div>Guess</div>  
             </React.Fragment>
         )
     }
-}
+ }
 
-export { Round };
+ export { Guess };
