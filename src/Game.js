@@ -6,14 +6,13 @@ class Game extends Component {
     constructor() {
         super();
         this.state = {
-            rounds: "10",
+            rounds: "8",
             newGame: false,
             guesses: []
         }
   
         this.handleOptionChange = this.handleOptionChange.bind(this);
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
-        console.log(`Created new game with ${this.state.rounds} rounds`);
     }
   
     handleOptionChange(selectedOption) {
@@ -23,23 +22,22 @@ class Game extends Component {
     }
   
     handleFormSubmit() {
-      console.log('You have selected:', this.state.selectedOption);
       this.setState(
         {newGame: true}
       )
     }
 
     render() {
-        let game = <div></div>
+        let board = <div></div>
         if(this.state.newGame) {
-            game = <div>{`Created new game with ${this.state.rounds} rounds`}</div>
+            board = <div>{`Created a board with ${this.state.rounds} rounds`}</div>
         }
         return (
             <React.Fragment>
                 <Setup selectedOption={this.state.rounds}
                        handleOptionChange={this.handleOptionChange}
                        handleFormSubmit={this.handleFormSubmit} />
-                {game}
+                {board}
             </React.Fragment>
         )
     }
