@@ -9,7 +9,7 @@ class PlayingField extends Component {
     generateRounds() {
         let rounds = [];
         for (let i = 0; i < this.props.rounds; i++) {
-            rounds.unshift(<Round roundNumber={i + 1} />);
+            rounds.unshift(<Round roundNumber={i + 1} key={i} />);
         }
         return rounds;
     }
