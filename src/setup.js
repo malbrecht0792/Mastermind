@@ -1,53 +1,51 @@
 import React, { Component } from 'react';
 
 class Setup extends Component {
-    constructor() {
-        super();
-        this.state = {
-            selectedOption: "8"
-        }
-        this.handleOptionChange = this.handleOptionChange.bind(this);
-        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    constructor(props) {
+        super(props);
+
+        this.onOptionChange = this.onOptionChange.bind(this);
+        this.onFormSubmit = this.onFormSubmit.bind(this);
     }
 
-    handleOptionChange(e) {
-        this.setState(
-            {selectedOption: e.target.value}
-        )
+    onOptionChange(e) {
+        let selectedOption = e.target.value
+
+        this.props.handleOptionChange(selectedOption);
     }
 
-    handleFormSubmit(e) {
+    onFormSubmit(e) {
         e.preventDefault();
 
-        console.log('You have selected:', this.state.selectedOption);
+        this.props.handleFormSubmit();
     }
     
     render() {
         return (
             <React.Fragment>
                 <div>Rounds</div>
-                <form onSubmit={this.handleFormSubmit}>
+                <form onSubmit={this.onFormSubmit}>
                     <span className="radio">
                         <label>
                             <input type="radio" value="8"
-                                   checked={this.state.selectedOption === "8"}
-                                   onChange={this.handleOptionChange} />
+                                   checked={this.props.selectedOption === "8"}
+                                   onChange={this.onOptionChange} />
                             8
                         </label>
                     </span>
                     <span className="radio">
                         <label>
                             <input type="radio" value="10"
-                            checked={this.state.selectedOption === "10"}
-                            onChange={this.handleOptionChange} />
+                            checked={this.props.selectedOption === "10"}
+                            onChange={this.onOptionChange} />
                             10
                         </label>
                     </span>
                     <span className="radio">
                         <label>
                             <input type="radio" value="12"
-                            checked={this.state.selectedOption === "12"}
-                            onChange={this.handleOptionChange} />
+                            checked={this.props.selectedOption === "12"}
+                            onChange={this.onOptionChange} />
                             12
                         </label>
                     </span>
@@ -58,4 +56,4 @@ class Setup extends Component {
     }
 }
 
-export { Setup }
+export { Setup };
