@@ -11,8 +11,8 @@ class Round extends Component {
         return (
             <React.Fragment>
                 <div>
-                <Guess />
-                <Response />
+                    <Guess />
+                    <Response />
                 </div>
                 {/* <div>Round {this.props.roundNumber}</div> */}
             </React.Fragment>
