@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { PlayingField } from './PlayingField';
+import { CodePegBank } from './CodePegBank';
 
 class Board extends Component {
     constructor(props) {
@@ -10,7 +11,7 @@ class Board extends Component {
         return (
             <React.Fragment>
                 <PlayingField rounds={this.props.rounds} />
-                <div>Code Peg Bank</div>
+                <CodePegBank />
             </React.Fragment>
         )
     }

@@ -7,7 +7,7 @@ class KeyPeg extends Component {
     
     render() {
         return (
-            <span class="key-peg"></span>  
+            <span className="key-peg"></span>  
         )
     }
  }

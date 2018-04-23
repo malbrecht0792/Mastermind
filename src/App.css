@@ -35,6 +35,30 @@
   display: inline-block;
 }
 
+.red-code-peg {
+  background-color: red;
+}
+
+.white-code-peg {
+  background-color: white;
+}
+
+.black-code-peg {
+  background-color: black;
+}
+
+.blue-code-peg {
+  background-color: blue;
+}
+
+.yellow-code-peg {
+  background-color: yellow;
+}
+
+.green-code-peg {
+  background-color: green;
+}
+
 .key-peg {
   height: 10px;
   width: 10px;

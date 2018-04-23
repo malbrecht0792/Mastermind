@@ -7,7 +7,7 @@ class CodePeg extends Component {
     
     render() {
         return (
-            <span class="code-peg"></span>  
+            <span className={`code-peg ${this.props.colorClass}`}></span>  
         )
     }
  }
