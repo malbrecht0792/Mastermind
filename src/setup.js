@@ -7,6 +7,7 @@ class Setup extends Component {
             selectedOption: "8"
         }
         this.handleOptionChange = this.handleOptionChange.bind(this);
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
     }
 
     handleOptionChange(e) {
@@ -14,12 +15,18 @@ class Setup extends Component {
             {selectedOption: e.target.value}
         )
     }
+
+    handleFormSubmit(e) {
+        e.preventDefault();
+
+        console.log('You have selected:', this.state.selectedOption);
+    }
     
     render() {
         return (
             <React.Fragment>
                 <div>Rounds</div>
-                <form>
+                <form onSubmit={this.handleFormSubmit}>
                     <span className="radio">
                         <label>
                             <input type="radio" value="8"
@@ -44,6 +51,7 @@ class Setup extends Component {
                             12
                         </label>
                     </span>
+                    <button className="btn btn-default" type="submit">New Game</button>
                 </form>
             </React.Fragment>
         )
