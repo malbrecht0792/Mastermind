@@ -1,14 +1,25 @@
 import React, { Component } from 'react';
+import { Round } from './Round.js'
 
 class PlayingField extends Component {
     constructor(props) {
         super(props);
     }
 
+    generateRounds() {
+        let rounds = [];
+        for (let i = 0; i < this.props.rounds; i++) {
+            rounds.unshift(<Round roundNumber={i + 1} />);
+        }
+        return rounds;
+    }
+
     render() {
         return (
             <React.Fragment>
-                <div>Playing Field with {this.props.rounds} Rounds</div>
+                <div>
+                    {this.generateRounds()}
+                </div>
             </React.Fragment>
         )
     }
