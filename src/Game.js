@@ -15,6 +15,7 @@ class Game extends Component {
         this.handleOptionChange = this.handleOptionChange.bind(this);
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.updateActiveCodePegColorClass = this.updateActiveCodePegColorClass.bind(this);
+        this.updateActiveCodePeg = this.updateActiveCodePeg.bind(this);
     }
   
     handleOptionChange(selectedOption) {
@@ -78,15 +79,42 @@ class Game extends Component {
 
         let board = this.state.board.slice();
         let activeRound = board.filter(filterByActive)[0];
-        console.log(activeRound);
         let activeCodePeg = activeRound.codePegs.filter(filterByActive)[0];
-        console.log(activeCodePeg);
         activeCodePeg.colorClass = colorClass;
-        console.log(activeCodePeg);
+        this.setState(
+            {board: board}
+        )
+        this.updateActiveCodePeg();
+    }
+    
+    updateActiveCodePeg() {
+        function filterByActive(item) {
+            return item.active ? true : false
+        }
+
+        let board = this.state.board.slice();
+        let activeRound = board.filter(filterByActive)[0];
+        let activeCodePeg = activeRound.codePegs.filter(filterByActive)[0];
+        let activeCodePegId = activeCodePeg.id
+        if (activeCodePeg.colorClass !== "code-peg") {
+            let newActiveCodePeg = activeRound.codePegs[activeCodePegId + 1]
+            if (newActiveCodePeg) {
+                newActiveCodePeg.active = true
+                activeCodePeg.active = false;
+            }
+        } else {
+            let newActiveCodePeg = activeRound.codePegs[activeCodePegId - 1]
+            if (newActiveCodePeg) {
+                newActiveCodePeg.active = true
+                activeCodePeg.active = false;
+            }
+        }
         this.setState(
             {board: board}
         )
     }
+
+
 
     render() {
         let board = <div></div>
