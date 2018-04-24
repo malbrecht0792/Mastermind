@@ -3,18 +3,13 @@ import { Guess } from './Guess.js';
 import { Response } from './Response.js';
 
 class Round extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <React.Fragment>
                 <div>
-                    <Guess />
-                    <Response />
+                    <Guess codePegs={this.props.round.codePegs} />
+                    <Response keyPegs={this.props.round.keyPegs} />
                 </div>
-                {/* <div>Round {this.props.roundNumber}</div> */}
             </React.Fragment>
         )
     }

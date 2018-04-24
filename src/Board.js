@@ -3,15 +3,11 @@ import { PlayingField } from './PlayingField';
 import { CodePegBank } from './CodePegBank';
 
 class Board extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <React.Fragment>
-                <PlayingField rounds={this.props.rounds} />
-                <CodePegBank />
+                <PlayingField rounds={this.props.rounds} board={this.props.board} />
+                <CodePegBank updateActiveCodePegColorClass={this.props.updateActiveCodePegColorClass} />
             </React.Fragment>
         )
     }

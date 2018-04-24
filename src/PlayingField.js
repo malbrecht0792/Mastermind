@@ -2,14 +2,10 @@ import React, { Component } from 'react';
 import { Round } from './Round.js'
 
 class PlayingField extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     generateRounds() {
         let rounds = [];
-        for (let i = 0; i < this.props.rounds; i++) {
-            rounds.unshift(<Round roundNumber={i + 1} key={i} />);
+        for (let i = 0; i < this.props.board.length; i++) {
+            rounds.push(<Round key={i} round={this.props.board[i]} />);
         }
         return rounds;
     }

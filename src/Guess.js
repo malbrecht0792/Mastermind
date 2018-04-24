@@ -3,14 +3,10 @@ import { CodePeg } from './CodePeg';
 
 
 class Guess extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     generateCodePegs() {
         let codePegs = [];
-        for (let i = 0; i < 4; i++) {
-            codePegs.push(<CodePeg key={i} />);
+        for (let i = 0; i < this.props.codePegs.length; i++) {
+            codePegs.push(<CodePeg key={i} colorClass={this.props.codePegs[i].colorClass} />);
         }
         return codePegs;
     }
