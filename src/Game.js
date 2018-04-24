@@ -15,6 +15,7 @@ class Game extends Component {
         this.handleOptionChange = this.handleOptionChange.bind(this);
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.updateActiveCodePegColorClass = this.updateActiveCodePegColorClass.bind(this);
+        this.removeActiveCodePegColorClass = this.removeActiveCodePegColorClass.bind(this);
         this.updateActiveCodePeg = this.updateActiveCodePeg.bind(this);
     }
   
@@ -87,7 +88,7 @@ class Game extends Component {
         this.updateActiveCodePeg();
     }
     
-    updateActiveCodePeg() {
+    removeActiveCodePegColorClass() {
         function filterByActive(item) {
             return item.active ? true : false
         }
@@ -95,15 +96,38 @@ class Game extends Component {
         let board = this.state.board.slice();
         let activeRound = board.filter(filterByActive)[0];
         let activeCodePeg = activeRound.codePegs.filter(filterByActive)[0];
-        let activeCodePegId = activeCodePeg.id
+        let activeCodePegIndex = activeCodePeg.id
+        if (activeCodePeg.colorClass === "code-peg") {
+            activeRound.codePegs[activeCodePegIndex - 1].colorClass = "code-peg"
+        } else {
+            activeCodePeg.colorClass = "code-peg";
+        }
+
+        this.setState(
+            {board: board}
+        )
+        this.updateActiveCodePeg();
+    }
+    
+    updateActiveCodePeg() {
+        function filterByActive(item) {
+            return item.active ? true : false
+        }
+        
+        let board = this.state.board.slice();
+        let activeRound = board.filter(filterByActive)[0];
+        let activeCodePeg = activeRound.codePegs.filter(filterByActive)[0];
+        let activeCodePegIndex = activeCodePeg.id
         if (activeCodePeg.colorClass !== "code-peg") {
-            let newActiveCodePeg = activeRound.codePegs[activeCodePegId + 1]
+            let newActiveCodePeg = activeRound.codePegs[activeCodePegIndex + 1]
             if (newActiveCodePeg) {
                 newActiveCodePeg.active = true
                 activeCodePeg.active = false;
             }
+        } else if (activeCodePegIndex === 3 && activeRound.codePegs[activeCodePegIndex - 1].colorClass !== "code-peg") {
+            activeCodePeg.active = true;
         } else {
-            let newActiveCodePeg = activeRound.codePegs[activeCodePegId - 1]
+            let newActiveCodePeg = activeRound.codePegs[activeCodePegIndex - 1]
             if (newActiveCodePeg) {
                 newActiveCodePeg.active = true
                 activeCodePeg.active = false;
@@ -121,7 +145,8 @@ class Game extends Component {
         if(this.state.newGame) {
             board = <Board rounds={Number(this.state.rounds)}
                            board={this.state.board}
-                           updateActiveCodePegColorClass={this.updateActiveCodePegColorClass} />
+                           updateActiveCodePegColorClass={this.updateActiveCodePegColorClass}
+                           removeActiveCodePegColorClass={this.removeActiveCodePegColorClass} />
         }
         return (
             <React.Fragment>

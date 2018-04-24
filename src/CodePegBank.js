@@ -12,7 +12,7 @@ class CodePegBank extends Component {
         let codePegBankColors = ["red-code-peg", "white-code-peg", "black-code-peg", "blue-code-peg", "yellow-code-peg", "green-code-peg"]
         let codePegBank = [];
         for (let i = 0; i < 6; i++) {
-            codePegBank.push(<span onClick={this.onCodePegClick}><CodePeg key={i} colorClass={codePegBankColors[i]} /></span>);
+            codePegBank.push(<span onClick={this.onCodePegClick} key={i}><CodePeg key={i} colorClass={codePegBankColors[i]} /></span>);
         }
         return codePegBank;
     }

@@ -7,7 +7,7 @@ class Round extends Component {
         return (
             <React.Fragment>
                 <div>
-                    <Guess codePegs={this.props.round.codePegs} />
+                    <Guess codePegs={this.props.round.codePegs} removeActiveCodePegColorClass={this.props.removeActiveCodePegColorClass}/>
                     <Response keyPegs={this.props.round.keyPegs} />
                 </div>
             </React.Fragment>

@@ -5,7 +5,7 @@ class PlayingField extends Component {
     generateRounds() {
         let rounds = [];
         for (let i = 0; i < this.props.board.length; i++) {
-            rounds.push(<Round key={i} round={this.props.board[i]} />);
+            rounds.push(<Round key={i} round={this.props.board[i]} removeActiveCodePegColorClass={this.props.removeActiveCodePegColorClass} />);
         }
         return rounds;
     }

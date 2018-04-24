@@ -6,7 +6,7 @@ class Board extends Component {
     render() {
         return (
             <React.Fragment>
-                <PlayingField rounds={this.props.rounds} board={this.props.board} />
+                <PlayingField rounds={this.props.rounds} board={this.props.board} removeActiveCodePegColorClass={this.props.removeActiveCodePegColorClass} />
                 <CodePegBank updateActiveCodePegColorClass={this.props.updateActiveCodePegColorClass} />
             </React.Fragment>
         )
